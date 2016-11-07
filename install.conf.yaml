@@ -1,0 +1,26 @@
+- defaults:
+    link:
+        relink: true
+
+- clean: ['~']
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+
+- link:
+    ~/.dotfile: ''
+    ~/.zshenv: prezto/runcoms/zshenv
+    ~/.zprofile: prezto/runcoms/zprofile
+    ~/.zlogin: prezto/runcoms/zlogin
+    ~/.zlogout: prezto/runcoms/zlogout
+    ~/.zprezto: prezto
+    ~/.zshrc: zshrc
+    ~/.zpreztorc: zpreztorc
+    ~/.tmux.conf: tmux.conf
+    ~/.vim: vim
+    ~/.vimrc: vimrc
+    ~/.inputrc: inputrc    
+
+
+- shell:
+    - [vim +PluginInstall +qall]
