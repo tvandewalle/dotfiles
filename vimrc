@@ -19,10 +19,25 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'nvie/vim-flake8'
+Plugin 'psf/black'
+Plugin 'jparise/vim-graphql'
+Plugin 'pangloss/vim-javascript'
+Plugin 'maxmellon/vim-jsx-pretty'
+Plugin 'ycm-core/YouCompleteMe'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'mlaursen/vim-react-snippets'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+
+" UltiSnips Trigger Configuration
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 
 " NERDTreeTabs
@@ -64,6 +79,9 @@ let g:indent_guides_auto_colors = 1
 " <F5> to delete trailing whitespace
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
+" run flake8 when saving python files
+autocmd BufWritePost *.py call Flake8()
+
 " Python standards
 au BufNewFile,BufRead *.py set
     \ ft=python
@@ -85,27 +103,8 @@ au BufNewFile,BufRead *.md set
     \ expandtab
     \ autoindent
 
-" JSON files
-au BufNewFile,BufRead *.json set
-    \ ft=json
-    \ tabstop=2
-    \ softtabstop=2
-    \ shiftwidth=2
-    \ textwidth=79
-    \ expandtab
-    \ autoindent
-
 " Other file typess
-au BufNewFile,BufRead *.yml set
-    \ tabstop=2
-    \ softtabstop=2
-    \ shiftwidth=2
-    \ textwidth=79
-    \ expandtab
-    \ autoindent
-
-" Other file typess
-au BufNewFile,BufRead *.css, *.html set
+au BufNewFile,BufRead *.yml,*.yaml,*.json,*.css,*.html set
     \ tabstop=2
     \ softtabstop=2
     \ shiftwidth=2
