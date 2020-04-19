@@ -21,6 +21,7 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'nvie/vim-flake8'
 Plugin 'psf/black'
+Plugin 'fisadev/vim-isort'
 Plugin 'jparise/vim-graphql'
 Plugin 'pangloss/vim-javascript'
 Plugin 'maxmellon/vim-jsx-pretty'
@@ -28,6 +29,7 @@ Plugin 'ycm-core/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'mlaursen/vim-react-snippets'
+Plugin 'prettier/vim-prettier'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -43,6 +45,10 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " NERDTreeTabs
 let g:nerdtree_tabs_open_on_console_startup=2
 let g:nerdtree_tabs_startup_cd=1
+
+" isort
+let g:vim_isort_map = '<C-i>'
+let g:vim_isort_python_version = 'python3'
 
 " Color scheme
 set number
@@ -78,6 +84,12 @@ let g:indent_guides_auto_colors = 1
 
 " <F5> to delete trailing whitespace
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
+" <F9> mapped to running Black
+nnoremap <F9> :Black<CR>
+
+" run Black when saving python files
+autocmd BufWritePre *.py execute ':Black'
 
 " run flake8 when saving python files
 autocmd BufWritePost *.py call Flake8()

@@ -17,3 +17,12 @@ bindkey -v
 
 export EDITOR='vi'
 export VISUAL='vi'
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+path=($(python3 -m site --user-base)/bin $path)
