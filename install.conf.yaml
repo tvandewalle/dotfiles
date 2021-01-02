@@ -16,7 +16,8 @@
     ~/.zprezto: prezto
     ~/.zshrc: zshrc
     ~/.zpreztorc: zpreztorc
-    ~/.tmux.conf: tmux.conf
+    ~/.tmux.conf: tmux/.tmux.conf
+    ~/.tmux.conf.local: tmux.conf.local
     ~/.vim: vim
     ~/.vimrc: vimrc
     ~/.inputrc: inputrc    
